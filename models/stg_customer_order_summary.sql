@@ -1,4 +1,4 @@
--- To be peer-reviewed
+--  To be peer-reviewed
 WITH
 
 raw_customers AS (
@@ -66,4 +66,6 @@ SELECT
        ELSE 'Standard'
    END AS customer_type
 FROM customer_data
-ORDER BY customer_data.total_spent DESC;
+ORDER BY customer_data.total_spent DESC
+--To be peer-reviewed
+;
