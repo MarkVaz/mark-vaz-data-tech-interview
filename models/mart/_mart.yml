@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: open_status_time_delta
+    description: "{{ doc('open_status_time_delta') }}"
+    config:
+      matieralized: table
+    columns:
+      - name: month_transitioned_at
+        description: "{{ doc('month_transitioned_at') }}"
+      - name: avg_time_open_days
+        description: "{{ doc('avg_time_open_days')}}"
+
+
+  - name: termination_reasons_counts
+    description: "{{ doc('termination_reasons_counts') }}"
+    config:
+      matieralized: table
+    columns:
+      - name: row_count
+        description: "{{ doc('row_count')}}"
+      - name: termination_reason
+        description: "{{ doc('termination_reason')}}"
+      - name: transfer_method
+        description: "{{ doc('transfer_method')}}"
+      - name: state
+        description: "{{ doc('state')}}"
+      - name: inserted_month
+        description: "{{ doc('inserted_month')}}"
+
+  - name: transaction_close_date
+    description: "{{ doc('transaction_close_date') }}"
+    config:
+      matieralized: table
+    columns:
+      - name: id 
+        description: "{{ doc('transaction_transition_id')}}"
+      - name: transaction_id
+        description: "{{ doc('transaction_id')}}"
+      - name: closed_at
+        description: "{{ doc('closed_at')}}"
+      - name: inserted_at
+        description: "{{ doc('inserted_at')}}"
+      - name: updated_at
+        description: "{{ doc('updated_at')}}"
+      - name: new_state
+        description: "{{ doc('new_state')}}"
+      - name: is_open_transaction
+        description: "{{ doc('is_open_transaction')}}"
+      - name: old_state
+        description: "{{ doc('old_state')}}"
+      - name: old_state_transitioned_at
+        description: "{{ doc('old_state_transitioned_at')}}"
+      - name: transition_type
+        description: "{{ doc('transition_type')}}"
+      - name: time_delta_days
+        description: "{{ doc('time_delta_days')}}"
+      - name: time_delta_hours
+        description: "{{ doc('time_delta_hours')}}"

@@ -1,0 +1,97 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: "{{ doc('transactions') }}"
+    config:
+      matieralized: view
+    columns:
+      - name: id
+        description: "{{ doc('transaction_id') }}"
+        tests:
+          - not_null
+          - unique
+      - name: bid_id
+        description: "{{ doc('bid_id') }}"
+        tests:
+          - not_null
+      - name: state
+        description: "{{ doc('state') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['bid_accepted', 'approval_declined', 'pending_approval', 'expired', 'cancelled', 'closed_paid']
+      - name: transfer_method
+        description: "{{ doc('transfer_method') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['direct', 'forward_contract', 'unknown']
+      - name: inserted_at
+        description: "{{ doc('inserted_at') }}"
+      - name: company_id
+        description: "{{ doc('company_id') }}"
+      - name: num_shares
+        description: "{{ doc('num_shares') }}"
+      - name: price_per_share
+        description: "{{ doc('price_per_share') }}"
+      - name: gross_proceeds
+        description: "{{ doc('gross_proceeds') }}"
+      - name: _fivetran_deleted
+        description: "{{ doc('_fivetran_deleted') }}"
+      - name: _fivetran_synced
+        description: "{{ doc('_fivetran_synced') }}"
+
+  - name: stg_transaction_transitions
+    description: "{{ doc('transaction_transitions') }}"
+    config:
+      matieralized: view
+    columns:
+      - name: id
+        description: "{{ doc('transaction_transition_id') }}"
+        tests:
+          - not_null
+          - unique
+      
+      - name: inserted_at
+        description: "{{ doc('inserted_at') }}"
+      - name: updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: transaction_id
+        description: "{{ doc('transaction_id') }}"
+        tests:
+          - not_null
+      - name: new_state
+        description: "{{ doc('new_state') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['bid_accepted', 'approval_declined', 'pending_approval', 'expired', 'cancelled', 'closed_paid']
+      - name: transitioned_at
+        description: "{{ doc('transitioned_at') }}"
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "{{ doc('_fivetran_deleted') }}"
+      - name: _fivetran_synced
+        description: "{{ doc('_fivetran_synced') }}"
+    
+  - name: stg_transaction_termination_reasons
+    description: "{{ doc('transaction_termination_reasons') }}"
+    config:
+      matieralized: view
+    columns:
+      - name: transaction_id
+        description: "{{ doc('transaction_id') }}"
+        tests:
+          - not_null
+      - name: termination_reason
+        description: "{{ doc('termination_reason') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['buyer_backed_out', 'other', 'combining_transactions', 'seller_backed_out', 'transferability_issues', 'other_*_requires_context']
