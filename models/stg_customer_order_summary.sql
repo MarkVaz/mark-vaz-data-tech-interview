@@ -1,3 +1,4 @@
+-- To be peer-reviewed
 WITH
 
 raw_customers AS (
