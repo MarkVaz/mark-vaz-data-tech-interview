@@ -1,4 +1,5 @@
 ### Answers to below Case Study can be found in models folder. Written answers are located in `models/question_responses.md`
+See pull requests for Peer Review of the provided model
 
 # Hiive Analytics Engineer Case Study
 
