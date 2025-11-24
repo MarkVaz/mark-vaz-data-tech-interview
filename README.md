@@ -1,3 +1,5 @@
+# Answers to below Case Study can be found in models folder. Written answers are located in `models/question_responses.md`
+
 # Hiive Analytics Engineer Case Study
 
 While the case study reference Hiive, the scenarios, processes, and data are fictitious. This case study is the property of The Hiive Company Limited, is confidential and is not to be disseminated without Hiive’s prior consent. 
